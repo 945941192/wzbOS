@@ -1,11 +1,12 @@
 BUILD:=./build
-HD_IMG_NAME:= hd.img
+HD_IMG_NAME:=hd.img
 
 
-all: ${BUILD}/boot/boot.o
+all: ${BUILD}/boot/boot.o ${BUILD}/boot/setup.o
 	$(shell rm -rf $(HD_IMG_NAME))
 	bximage -q -hd=16 -func=create -sectsize=512 -imgmode=flat $(HD_IMG_NAME)
 	dd if=${BUILD}/boot/boot.o of=$(HD_IMG_NAME) bs=512 seek=0 count=1 conv=notrunc
+	dd if=${BUILD}/boot/setup.o of=$(HD_IMG_NAME) bs=512 seek=1 count=1 conv=notrunc
 
 ${BUILD}/boot/%.o: oskernel/boot/%.asm
 	$(shell mkdir -p ${BUILD}/boot)
@@ -18,7 +19,7 @@ bochs:
 	bochs -q -f bochsrc
 
 qemug:
-	qemu-system-x86_64 -fda $(HD_IMG_NAME) -S -s
+	qemu-system-x86_64 -hda $(HD_IMG_NAME) -S -s
 
 qemu:
-	qemu-system-x86_64 -fda $(HD_IMG_NAME)
+	qemu-system-x86_64 -hda $(HD_IMG_NAME)				# -fda 用于软盘驱动器，-hda 用于硬盘驱动器
