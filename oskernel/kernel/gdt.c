@@ -1,5 +1,5 @@
 //
-// Created by ziya on 22-7-3.
+// Created by wzb on 22-7-3.
 //
 #include "../include/asm/system.h"
 #include "../include/linux/kernel.h"
@@ -79,6 +79,5 @@ void gdt_init() {
     gdt_ptr.base = &gdt;
     gdt_ptr.limit = sizeof(gdt) - 1;
 
-    BOCHS_DEBUG_MAGIC
     __asm__ volatile ("lgdt gdt_ptr;");
 }

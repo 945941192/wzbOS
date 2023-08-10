@@ -1,9 +1,9 @@
 //
-// Created by ziya on 22-6-25.
+// Created by wzb on 22-6-25.
 //
 
-#ifndef ZIYA_OSKERNEL_TEACH_COMMON_H
-#define ZIYA_OSKERNEL_TEACH_COMMON_H
+#ifndef wzb_OSKERNEL_TEACH_COMMON_H
+#define wzb_OSKERNEL_TEACH_COMMON_H
 
 #include "../linux/types.h"
 
@@ -33,4 +33,4 @@ typedef enum {
     rc_white = 15
 } real_color_t;
 
-#endif //ZIYA_OSKERNEL_TEACH_COMMON_H
+#endif //wzb_OSKERNEL_TEACH_COMMON_H

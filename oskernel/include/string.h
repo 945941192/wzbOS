@@ -1,9 +1,9 @@
 //
-// Created by ziya on 22-6-26.
+// Created by wzb on 22-6-26.
 //
 
-#ifndef ZIYA_OSKERNEL_TEACH_STRING_H
-#define ZIYA_OSKERNEL_TEACH_STRING_H
+#ifndef wzb_OSKERNEL_TEACH_STRING_H
+#define wzb_OSKERNEL_TEACH_STRING_H
 
 #include "asm/system.h"
 
@@ -19,4 +19,4 @@ void* memset(void* dest, int ch, size_t count);
 void* memcpy(void* dest, const void* src, size_t count);
 void* memchr(const void* ptr, int ch, size_t count);
 
-#endif //ZIYA_OSKERNEL_TEACH_STRING_H
+#endif //wzb_OSKERNEL_TEACH_STRING_H

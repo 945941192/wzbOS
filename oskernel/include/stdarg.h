@@ -1,9 +1,9 @@
 //
-// Created by ziya on 22-6-26.
+// Created by wzb on 22-6-26.
 //
 
-#ifndef ZIYA_OSKERNEL_TEACH_STDARG_H
-#define ZIYA_OSKERNEL_TEACH_STDARG_H
+#ifndef wzb_OSKERNEL_TEACH_STDARG_H
+#define wzb_OSKERNEL_TEACH_STDARG_H
 
 typedef char* va_list;
 
@@ -12,4 +12,4 @@ typedef char* va_list;
 #define va_arg(p, t) (*(t*)((p += sizeof(char*)) - sizeof(char*)))
 #define va_end(p) (p = 0)
 
-#endif //ZIYA_OSKERNEL_TEACH_STDARG_H
+#endif //wzb_OSKERNEL_TEACH_STDARG_H

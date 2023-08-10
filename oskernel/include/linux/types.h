@@ -1,9 +1,9 @@
 //
-// Created by ziya on 22-6-26.
+// Created by wzb on 22-6-26.
 //
 
-#ifndef ZIYA_OSKERNEL_TEACH_TYPES_H
-#define ZIYA_OSKERNEL_TEACH_TYPES_H
+#ifndef wzb_OSKERNEL_TEACH_TYPES_H
+#define wzb_OSKERNEL_TEACH_TYPES_H
 
 #define EOF -1 // END OF FILE
 
@@ -29,4 +29,4 @@ typedef unsigned int u32;
 typedef unsigned long long u64;
 
 
-#endif //ZIYA_OSKERNEL_TEACH_TYPES_H
+#endif //wzb_OSKERNEL_TEACH_TYPES_H

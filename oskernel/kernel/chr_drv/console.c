@@ -1,5 +1,5 @@
 //
-// Created by ziya on 22-6-26.
+// Created by wzb on 22-6-26.
 //
 
 #include "../../include/asm/io.h"
@@ -124,6 +124,8 @@ static void command_del()
 
 void console_write(char *buf, u32 count)
 {
+    CLI
+
     char ch;
     char *ptr = (char *)pos;
     while (count--)
@@ -173,7 +175,10 @@ void console_write(char *buf, u32 count)
                 break;
         }
     }
+
     set_cursor();
+
+    STI
 }
 
 void console_init(void) {

@@ -1,9 +1,9 @@
 //
-// Created by ziya on 22-6-27.
+// Created by wzb on 22-6-27.
 //
 
-#ifndef ZIYA_OSKERNEL_TEACH_HEAD_H
-#define ZIYA_OSKERNEL_TEACH_HEAD_H
+#ifndef wzb_OSKERNEL_TEACH_HEAD_H
+#define wzb_OSKERNEL_TEACH_HEAD_H
 
 typedef struct gdt_item_t {
     unsigned short limit_low;      // 段界限 0 ~ 15 位
@@ -44,4 +44,4 @@ typedef struct xdt_ptr_t {
 } xdt_ptr_t;
 #pragma pack()
 
-#endif //ZIYA_OSKERNEL_TEACH_HEAD_H
+#endif //wzb_OSKERNEL_TEACH_HEAD_H
