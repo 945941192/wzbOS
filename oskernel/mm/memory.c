@@ -38,7 +38,7 @@ void memory_init() {
         return;
     }
 
-    g_physics_memory.pages_total = g_physics_memory.addr_end >> 12;                                 // 除以每页4k就是向右移动12位
+    g_physics_memory.pages_total = g_physics_memory.addr_end >> 12;
     g_physics_memory.pages_used = 0;
     g_physics_memory.pages_free = g_physics_memory.pages_total - g_physics_memory.pages_used;
 }
@@ -96,4 +96,44 @@ void print_check_memory_info() {
     }
 
     printk("====== memory check info =====\n");
+}
+
+void* get_free_page() {
+    bool find = false;
+
+    int i = g_physics_memory_map.bitmap_item_used;
+    for (; i < g_physics_memory.pages_total; ++i) {
+        if (0 == g_physics_memory_map.map[i]) {
+            find = true;
+            break;
+        }
+    }
+
+    if (!find) {
+        printk("memory used up!");
+        return NULL;
+    }
+
+    g_physics_memory_map.map[i] = 1;
+    g_physics_memory_map.bitmap_item_used++;
+
+    void* ret = (void*)(g_physics_memory_map.addr_base + (i << 12));
+
+    printk("[%s]return: 0x%X, used: %d pages\n", __FUNCTION__, ret, g_physics_memory_map.bitmap_item_used);
+
+    return ret;
+}
+
+void free_page(void* p) {
+    if (p < g_physics_memory.addr_start || p > g_physics_memory.addr_end) {
+        printk("invalid address!");
+        return;
+    }
+
+    int index = (int)(p - g_physics_memory_map.addr_base) >> 12;
+
+    g_physics_memory_map.map[index] = 0;
+    g_physics_memory_map.bitmap_item_used--;
+
+    printk("[%s]return: 0x%X, used: %d pages\n", __FUNCTION__, p, g_physics_memory_map.bitmap_item_used);
 }
