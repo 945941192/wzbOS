@@ -16,6 +16,8 @@ void kernel_main(void) {
     clock_init();
 
     print_check_memory_info();
+    memory_init();
+    memory_map_int();
 
     __asm__("sti;");
 
