@@ -8,12 +8,12 @@
 #define PIT_CHAN2_REG 0X42
 #define PIT_CTRL_REG 0X43
 
-#define HZ 10
+#define HZ 100
 #define OSCILLATOR 1193182
 #define CLOCK_COUNTER (OSCILLATOR / HZ)
 
 // 10ms触发一次中断
-#define JIFFY (1000000000 / HZ)
+#define JIFFY (1000 / HZ)
 
 int jiffy = JIFFY;
 int cpu_tickes = 0;
