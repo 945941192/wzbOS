@@ -9,8 +9,11 @@
 void kernel_main(void) {
     console_init();
     gdt_init();
+    idt_init();
 
     printk("ziya os cool\n");
+
+    __asm__("sti;");
 
     while (true);
 }

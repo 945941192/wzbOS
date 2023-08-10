@@ -8,5 +8,6 @@
 #include "head.h"
 
 void gdt_init();
+void idt_init();
 
 #endif //ZIYA_OSKERNEL_RESEARCH_TRAPS_H
