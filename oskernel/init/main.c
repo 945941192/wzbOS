@@ -1,20 +1,16 @@
 //
-// Created by wzb on 23-8-9.
+// Created by ziya on 22-6-23.
 //
 
 #include "../include/linux/tty.h"
 #include "../include/linux/kernel.h"
+#include "../include/linux/traps.h"
 
 void kernel_main(void) {
     console_init();
+    gdt_init();
 
-    char* a = 0xb8000;
-    *a = 'Z';
-
-    char* s = "ABCD";
-    for (int i = 0; i < 20; ++i) {
-        printk("name: %s, age:%d\n", s, i);
-    }
+    printk("ziya os cool\n");
 
     while (true);
 }
