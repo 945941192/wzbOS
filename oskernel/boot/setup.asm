@@ -13,14 +13,14 @@ DATA_SELECTOR equ (2 << 3)
 gdt_base:
     dd 0, 0
 gdt_code:
-    dw SEG_LIMIT & 0xffff    ; 65535
-    dw SEG_BASE & 0xffff     ; 0
-    db SEG_BASE >> 16 & 0xff ; 0
+    dw SEG_LIMIT & 0xffff
+    dw SEG_BASE & 0xffff
+    db SEG_BASE >> 16 & 0xff
     ;    P_DPL_S_TYPE
     db 0b1_00_1_1000
     ;    G_DB_AVL_LIMIT
-    db 0b0_1_00_0000 | (SEG_LIMIT >> 16 & 0xf) ; 32
-    db SEG_BASE >> 24 & 0xff ; 0
+    db 0b0_1_00_0000 | (SEG_LIMIT >> 16 & 0xf)
+    db SEG_BASE >> 24 & 0xf
 gdt_data:
     dw SEG_LIMIT & 0xffff
     dw SEG_BASE & 0xffff
@@ -29,7 +29,7 @@ gdt_data:
     db 0b1_00_1_0010
     ;    G_DB_AVL_LIMIT
     db 0b1_1_00_0000 | (SEG_LIMIT >> 16 & 0xf)
-    db SEG_BASE >> 24 & 0xff
+    db SEG_BASE >> 24 & 0xf
 gdt_ptr:
     dw $ - gdt_base
     dd gdt_base
@@ -53,8 +53,6 @@ enter_protected_mode:
     ; 关中断
     cli
 
-;    xchg bx, bx
-;    xchg bx, bx
     ; 加载gdt表
     lgdt  [gdt_ptr]
 
